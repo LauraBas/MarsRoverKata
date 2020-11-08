@@ -34,18 +34,38 @@ Class Rover {
     }
     public function turnLeft() :void
     {
-        if($this->roverOrientation == "N")
-        {
-            $this->roverOrientation = "W";
+        switch ($this->roverOrientation) {
+            case $this->roverOrientation == "N":
+                $this->roverOrientation = "W";
+                break;
+            case $this->roverOrientation == "W":
+                $this->roverOrientation = "S";
+                break;
+            case $this->roverOrientation == "S":
+                $this->roverOrientation = "E";
+                break;
+            case $this->roverOrientation == "E":
+                $this->roverOrientation = "N";
+                break;
         }
                         
     }
 
     public function turnRigth() :void
     {
-        if($this->roverOrientation == "N")
-        {
-            $this->roverOrientation = "E";
+        switch ($this->roverOrientation) {
+            case $this->roverOrientation == "N":
+                $this->roverOrientation = "E";
+                break;
+            case $this->roverOrientation == "E":
+                $this->roverOrientation = "S";
+                break;
+            case $this->roverOrientation == "S":
+                $this->roverOrientation = "W";
+                break;
+            case $this->roverOrientation == "W":
+                $this->roverOrientation = "N";
+                break;
         }
             
     }
