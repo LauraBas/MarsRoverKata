@@ -4,6 +4,7 @@ namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 use App\Models\Rover;
+use App\Models\Plateau;
 
 class RoverTest extends TestCase
 {
@@ -31,6 +32,12 @@ class RoverTest extends TestCase
 		$this->assertRover("5 5\n2 2 N\nRRMM", "2 0 S");
 		$this->assertRover("5 5\n1 2 N\nLMLMLMLMM", "1 3 N");
 		$this->assertRover("5 5\n3 3 E\nMMRMMRMRRM", "5 1 E");
+			
+	}
+	public function test_return_rover_move_inside_plateau()
+	{
+		$this->assertRover("0 0\n0 0 N\nM", "out of limits");
+		
 			
 	}
 

@@ -1,18 +1,25 @@
 <?php
 
 namespace App\Models;
+use App\Models\Plateau;
 
 Class Rover {
-
-    
         
     public function __construct(string $input)
     {
         $instructions = explode("\n", $input);
+        $plateauDimensions = $instructions[0];
         $initialPosition = $instructions[1];
         $movements = $instructions[2];
         $this->setRoverMovements($movements);
         $this->setRoverInstructions($initialPosition);
+        $this->setPlateau($plateauDimensions);
+        
+    }
+    public function setPlateau($plateauDimensions) :void
+    {
+       $this->plateau = new Plateau($plateauDimensions);
+       
     }
     
 
@@ -22,15 +29,11 @@ Class Rover {
         $this->roverX = (int) $positions[0];
         $this->roverY = (int) $positions[1];
         $this->roverOrientation = $positions[2];
-
     }
     public function setRoverMovements($input) :void
     {
-
         $this->movements = str_split($input);
-        
-
-        
+                
     }
     public function turnLeft() :void
     {
@@ -85,11 +88,12 @@ Class Rover {
                 $this->roverX -= 1;
                 break;
         }
-            
+                
     }
         
     public function go() :string
-    {        
+    {     
+                 
         foreach ($this->movements as $movement)
         {
             if($movement == "L")
@@ -103,12 +107,14 @@ Class Rover {
             if($movement == "M")
             {
                 $this->move();
-            }
-
+                if ($this->plateau->isOutsidePlateau($this->roverX, $this->roverY))
+                {
+                    return "out of limits";
+                }
+            } 
         }                
         return $this->roverX . " " . $this->roverY . " " . $this->roverOrientation;                                            
-    }
-    
+    }    
 }
     
     
