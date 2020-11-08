@@ -32,15 +32,41 @@ Class Rover {
 
         
     }
+    public function turnLeft() :void
+    {
+        if($this->roverOrientation == "N")
+        {
+            $this->roverOrientation = "W";
+        }
+                        
+    }
+
+    public function turnRigth() :void
+    {
+        if($this->roverOrientation == "N")
+        {
+            $this->roverOrientation = "E";
+        }
+            
+    }
         
     public function go() :string
     {        
         foreach ($this->movements as $movement)
         {
+            if($movement == "L")
+            {
+                $this->turnLeft();
+            }
+            if($movement == "R")
+            {
+                $this->turnRigth();
+            }
             if($movement == "M")
             {
                 $this->roverY += 1;
             }
+
         }
         
         

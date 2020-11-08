@@ -16,6 +16,13 @@ class RoverTest extends TestCase
 		$this->assertRover("5 5\n0 0 N\nMMM", "0 3 N");
 		
 	}
+	public function test_return_rover_orientation()
+	{
+		$this->assertRover("5 5\n0 0 N\nL", "0 0 W");
+		$this->assertRover("5 5\n0 0 N\nR", "0 0 E");
+		
+		
+	}
 
 	private function assertRover($input, $expected) 
 	{
