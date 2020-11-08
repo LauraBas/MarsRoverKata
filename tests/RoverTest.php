@@ -8,45 +8,15 @@ use App\Models\Rover;
 class RoverTest extends TestCase
 {
 
-	public function test_return_rover_input()
+	public function test_return_rover_movement_is_0()
 	{
         
-		$rover = new Rover(
-            "5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM");        
+		$rover = new Rover("0 0 N");        
         
-		$rover->getInput();        
+		$result = $rover->go();        
         
-		$this->assertEquals("5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM", $rover->getInput());
+		$this->assertEquals("0 0 N", $result);
 	}
-	public function test_return_plateau_dimensions()
-	{
-        
-		$rover = new Rover(
-            "5 5\n1 2 N\nLMLMLMLMM");        
-        
-		$result= $rover->getPlateauDimensions();      
-        
-		$this->assertEquals('5 5', $result);
-	}
-    public function test_return_rover_initial_position()
-	{
-        
-		$rover = new Rover(
-            "5 5\n1 2 N\nLMLMLMLMM");        
-        
-		$result= $rover->getInitialPosition();      
-        
-		$this->assertEquals('1 2 N', $result);
-	}
+
 	
-	public function test_return_rover_instructions()
-	{
-        
-		$rover = new Rover(
-            "5 5\n1 2 N\nLMLMLMLMM");        
-        
-		$result= $rover->getInstructions();      
-        
-		$this->assertEquals('LMLMLMLMM', $result);
-	}
 }

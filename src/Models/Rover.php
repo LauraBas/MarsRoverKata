@@ -3,46 +3,27 @@
 namespace App\Models;
 
 Class Rover {
-    
+
+        
     public function __construct(string $input)
     {
-        $this->input = $input;
-        $roverInfo;
-        $initialPosition;
-        $instructions;
-        $plateauDimensions;
-                   
+        $this->roverX = (int) $this->splitInput($input)[0];
+        $this->roverY = (int) $this->splitInput($input)[1];
+        $this->roverOrientation = $this->splitInput($input)[2];
     }
 
-    public function getInput() :string
+    public function splitInput($input) :array
     {
-        return $this->input;
+        $movements = explode(" ", $input);
+        return $movements;
     }
-
-    public function getPlateauDimensions() :string
+        
+    public function go()
     {
-        $input = $this->getInput();
-        $roverInfo = explode("\n", $input);
-        $this->plateauDimensions = $roverInfo[0];
-        return $this->plateauDimensions;
+       return $this->roverX . " " . $this->roverY . " " . $this->roverOrientation;
+        
     }
-   
-    public function getInitialPosition() :string 
-    {
-        $input = $this->getInput();
-        $roverInfo = explode("\n", $input);
-        $this->initialPosition = $roverInfo[1];
-        return $this->initialPosition;
-    }
-
-    public function getInstructions() :string 
-    {
-        $input = $this->getInput();
-        $roverInfo = explode("\n", $input);
-        $this->instructions = $roverInfo[2];
-        return $this->instructions;
-
-    }
-    
     
 }
+    
+    
