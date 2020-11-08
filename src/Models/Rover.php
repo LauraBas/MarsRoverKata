@@ -69,6 +69,24 @@ Class Rover {
         }
             
     }
+    public function move() :void
+    {
+        switch ($this->roverOrientation) {
+            case $this->roverOrientation == "N":
+                $this->roverY += 1;
+                break;
+            case $this->roverOrientation == "E":
+                $this->roverX += 1;
+                break;
+            case $this->roverOrientation == "S":
+                $this->roverY -= 1;
+                break;
+            case $this->roverOrientation == "W":
+                $this->roverX -= 1;
+                break;
+        }
+            
+    }
         
     public function go() :string
     {        
@@ -84,14 +102,11 @@ Class Rover {
             }
             if($movement == "M")
             {
-                $this->roverY += 1;
+                $this->move();
             }
 
-        }
-        
-        
-        return $this->roverX . " " . $this->roverY . " " . $this->roverOrientation;        
-                                    
+        }                
+        return $this->roverX . " " . $this->roverY . " " . $this->roverOrientation;                                            
     }
     
 }

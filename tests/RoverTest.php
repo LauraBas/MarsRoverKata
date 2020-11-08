@@ -23,8 +23,15 @@ class RoverTest extends TestCase
 		$this->assertRover("5 5\n0 0 W\nR", "0 0 N");
 		$this->assertRover("5 5\n0 0 N\nR", "0 0 E");
 		$this->assertRover("5 5\n0 0 S\nR", "0 0 W");
-		
-		
+		$this->assertRover("5 5\n0 0 E\nML", "1 0 N");	
+	}
+	public function test_return_rover_change_orientation_and_move()
+	{
+		$this->assertRover("5 5\n0 0 N\nRM", "1 0 E");
+		$this->assertRover("5 5\n2 2 N\nRRMM", "2 0 S");
+		$this->assertRover("5 5\n1 2 N\nLMLMLMLMM", "1 3 N");
+		$this->assertRover("5 5\n3 3 E\nMMRMMRMRRM", "5 1 E");
+			
 	}
 
 	private function assertRover($input, $expected) 
