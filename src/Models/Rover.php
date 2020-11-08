@@ -26,18 +26,26 @@ Class Rover {
     }
     public function setRoverMovements($input) :void
     {
-        $this->movements = $input;
+
+        $this->movements = str_split($input);
+        
+
+        
     }
         
     public function go() :string
     {        
-        if ($this->movements === "M")
+        foreach ($this->movements as $movement)
         {
-            return $this->roverX . " " . ($this->roverY + 1 ). " " . $this->roverOrientation;        
-        } 
+            if($movement == "M")
+            {
+                $this->roverY += 1;
+            }
+        }
         
-            
+        
         return $this->roverX . " " . $this->roverY . " " . $this->roverOrientation;        
+                                    
     }
     
 }

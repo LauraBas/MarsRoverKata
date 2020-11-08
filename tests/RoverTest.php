@@ -12,6 +12,9 @@ class RoverTest extends TestCase
 	{
 		$this->assertRover("5 5\n0 0 N\n", "0 0 N");
 		$this->assertRover("5 5\n0 0 N\nM", "0 1 N");
+		$this->assertRover("5 5\n0 0 N\nMM", "0 2 N");
+		$this->assertRover("5 5\n0 0 N\nMMM", "0 3 N");
+		
 	}
 
 	private function assertRover($input, $expected) 
@@ -20,7 +23,7 @@ class RoverTest extends TestCase
         
 		$result = $rover->go();        
         
-		$this->assertEquals($expected, $rover->go());
+		$this->assertEquals($expected, $result);
 	}
 	
 }
