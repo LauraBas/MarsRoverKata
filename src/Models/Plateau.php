@@ -21,9 +21,7 @@ Class Plateau
 
     public function isOutsidePlateau($roverX, $roverY) :bool 
     {
-        return ($roverX > $this->plateauX) || ($roverY > $this->plateauY);
-        
+        return ($roverX > $this->plateauX || $roverX < 0) || ($roverY > $this->plateauY || $roverY < 0);
         
     }
-
 }

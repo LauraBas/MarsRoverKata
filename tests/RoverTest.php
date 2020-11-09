@@ -37,6 +37,9 @@ class RoverTest extends TestCase
 	public function test_return_rover_move_inside_plateau()
 	{
 		$this->assertRover("0 0\n0 0 N\nM", "out of limits");
+		$this->assertRover("1 1\n0 0 S\nM", "out of limits");
+		$this->assertRover("3 3\n3 3 E\nMMRMMRMRRM", "out of limits");
+
 		
 			
 	}
