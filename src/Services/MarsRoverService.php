@@ -9,7 +9,7 @@ class MarsRoverService
         $instructions = explode("\n", $input);
         $plateauDimensions = array_shift($instructions);
         $this->setPlateau($plateauDimensions);
-        $this->rovers = array();
+        $this->rovers = $this->createRovers($instructions);
         
     }
 
@@ -25,7 +25,15 @@ class MarsRoverService
         return $plateauSize;
     }
 
-    //private 
+    private function createRovers($instructions) :array
+    {
+        $rovers = [];
+        for ($i = 0; $i < count($instructions); $i+=2)
+        {
+            array_push($rovers,[$instructions[$i], $instructions[$i+1]]);
+        }    
+        return $rovers;
+    }
 
     public function numberOfRovers() :int
     {
