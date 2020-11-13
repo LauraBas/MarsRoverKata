@@ -114,7 +114,6 @@ Class Rover {
             } 
         }                
         return $this->roverX . " " . $this->roverY . " " . $this->roverOrientation;                                            
-    }    
+    } 
 }
-    
-    
+  

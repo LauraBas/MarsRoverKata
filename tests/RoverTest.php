@@ -39,10 +39,15 @@ class RoverTest extends TestCase
 		$this->assertRover("0 0\n0 0 N\nM", "out of limits");
 		$this->assertRover("1 1\n0 0 S\nM", "out of limits");
 		$this->assertRover("3 3\n3 3 E\nMMRMMRMRRM", "out of limits");
-
-		
-			
+					
 	}
+	// public function test_return_calculate_multiple_rovers()
+	// {
+	// 	$this->assertRover("5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM", "1 3 N\n5 1 E");
+		
+					
+	// }
+
 
 	private function assertRover($input, $expected) 
 	{
