@@ -8,9 +8,9 @@ Class Rover {
     public function __construct(string $input)
     {
         $instructions = explode("\n", $input);
-        $plateauDimensions = $instructions[0];
-        $initialPosition = $instructions[1];
-        $movements = $instructions[2];
+        $plateauDimensions = array_shift($instructions);
+        $initialPosition = $instructions[0];
+        $movements = $instructions[1];
         $this->setRoverMovements($movements);
         $this->setRoverInstructions($initialPosition);
         $this->setPlateau($plateauDimensions);

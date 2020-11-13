@@ -3,6 +3,7 @@
 namespace App\Models;
 use App\Models\Rover;
 
+
 Class Plateau 
 {
     public function __construct(string $plateauDimensions)

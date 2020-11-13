@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 use App\Models\Plateau;
+use App\Models\Rover;
 
 class MarsRoverService 
 {
@@ -28,15 +29,26 @@ class MarsRoverService
     private function createRovers($instructions) :array
     {
         $rovers = [];
-        for ($i = 0; $i < count($instructions); $i+=2)
+        while(count($instructions) > 0)
         {
-            array_push($rovers,[$instructions[$i], $instructions[$i+1]]);
-        }    
+            array_push($rovers,[array_shift($instructions), array_shift($instructions)]);
+            
+        }
         return $rovers;
     }
 
     public function numberOfRovers() :int
     {
         return count($this->rovers);
+    }
+
+    public function newRover() :Rover
+    {
+        foreach($this->rovers as $rover)
+        {            
+            //$input = implode(" ", $rover);
+            $rover = new Rover("5 5\n1 2 N\nLMLMLMLMM");
+            return $rover;
+        }
     }
 }
