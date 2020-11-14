@@ -33,17 +33,30 @@ class MarsRoverServiceTest extends TestCase
         
 		$this->assertEquals(2, $result);
 	}
-	public function test_return_rovers_created()
+	public function test_calculate_zero_rovers_positions()
+	{
+		$MarsRoverService = new MarsRoverService("");
+		
+		$result = $MarsRoverService->calculate();
+
+		$this->assertEquals([], $result);
+	}
+	
+	public function test_calculate_one_rover_position()
+	{
+		$MarsRoverService = new MarsRoverService("5 5\n1 2 N\nLMLMLMLMM");
+		
+		$result = $MarsRoverService->calculate();
+
+		$this->assertEquals(["1 3 N"], $result);
+	}
+	public function test_calculate_two_rover_position()
 	{
 		$MarsRoverService = new MarsRoverService("5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM");
 		
-		$result = $MarsRoverService->newRover();
-		$input ="5 5\n1 2 N\nLMLMLMLMM";
+		$result = $MarsRoverService->calculate();
 
-		$this->assertEquals(new Rover($input), $result);
-
-
+		$this->assertEquals(["1 3 N", "5 1 E"], $result);
 	}
-
 
 }

@@ -5,36 +5,15 @@ use App\Models\Plateau;
 
 Class Rover {
         
-    public function __construct(string $input)
+    public function __construct(string $input, Plateau $plateau, int $x, int $y, string $direction)
     {
-        $instructions = explode("\n", $input);
-        $plateauDimensions = array_shift($instructions);
-        $initialPosition = $instructions[0];
-        $movements = $instructions[1];
-        $this->setRoverMovements($movements);
-        $this->setRoverInstructions($initialPosition);
-        $this->setPlateau($plateauDimensions);
-        
+        $this->roverX = $x;
+        $this->roverY = $y;
+        $this->roverOrientation = $direction;
+        $this->plateau = $plateau;
+        $this->movements = str_split($input); 
     }
-    public function setPlateau($plateauDimensions) :void
-    {
-       $this->plateau = new Plateau($plateauDimensions);
-       
-    }
-    
 
-    public function setRoverInstructions($input) :void
-    {
-        $positions = explode(" ", $input);
-        $this->roverX = (int) $positions[0];
-        $this->roverY = (int) $positions[1];
-        $this->roverOrientation = $positions[2];
-    }
-    public function setRoverMovements($input) :void
-    {
-        $this->movements = str_split($input);
-                
-    }
     public function turnLeft() :void
     {
         switch ($this->roverOrientation) {

@@ -9,15 +9,18 @@ class MarsRoverService
     {
         $instructions = explode("\n", $input);
         $plateauDimensions = array_shift($instructions);
-        $this->setPlateau($plateauDimensions);
+        $this->plateau = new Plateau($plateauDimensions); 
         $this->rovers = $this->createRovers($instructions);
-        
     }
 
-    
-    private function setPlateau($plateauDimensions) :void
+    public function calculate() :array 
     {
-        $this->plateau = new Plateau($plateauDimensions);        
+        $result =[];
+        foreach($this->rovers as $rover)
+        {
+            array_push($result,$rover->go());
+        }
+        return $result;
     }
 
     public function getPlateauSize() :array
@@ -30,9 +33,10 @@ class MarsRoverService
     {
         $rovers = [];
         while(count($instructions) > 0)
-        {
-            array_push($rovers,[array_shift($instructions), array_shift($instructions)]);
-            
+        {   
+            $inital = array_shift($instructions);
+            $movements = array_shift($instructions);
+            array_push($rovers, $this->newRover($inital, $movements));   
         }
         return $rovers;
     }
@@ -42,13 +46,12 @@ class MarsRoverService
         return count($this->rovers);
     }
 
-    public function newRover() :Rover
+    private function newRover(string $initial, string $movements) :Rover
     {
-        foreach($this->rovers as $rover)
-        {            
-            //$input = implode(" ", $rover);
-            $rover = new Rover("5 5\n1 2 N\nLMLMLMLMM");
-            return $rover;
-        }
+        $explosion = explode(" ", $initial);
+        $x = (int) $explosion[0];
+        $y = (int) $explosion[1];
+        $dir = $explosion[2];
+        return new Rover($movements, $this->plateau, $x, $y, $dir);
     }
 }
