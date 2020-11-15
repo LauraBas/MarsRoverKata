@@ -17,22 +17,7 @@ class MarsRoverServiceTest extends TestCase
         
 		$this->assertEquals([5, 5], $result);
     }
-    public function test_return_count_of_rover_created() 
-	{
-		$MarsRoverService = new MarsRoverService("5 5\n1 2 N\nLMLMLMLMM");        
-        
-		$result = $MarsRoverService->numberOfRovers();        
-        
-		$this->assertEquals(1, $result);
-	}
-	public function test_return_count_of_multiple_rover_created() 
-	{
-		$MarsRoverService = new MarsRoverService("5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM");        
-        
-		$result = $MarsRoverService->numberOfRovers();        
-        
-		$this->assertEquals(2, $result);
-	}
+  
 	public function test_calculate_zero_rovers_positions()
 	{
 		$MarsRoverService = new MarsRoverService("");

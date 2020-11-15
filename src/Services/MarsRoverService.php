@@ -41,10 +41,7 @@ class MarsRoverService
         return $rovers;
     }
 
-    public function numberOfRovers() :int
-    {
-        return count($this->rovers);
-    }
+    
 
     private function newRover(string $initial, string $movements) :Rover
     {
