@@ -18,14 +18,7 @@ class MarsRoverServiceTest extends TestCase
 		$this->assertEquals([5, 5], $result);
     }
   
-	public function test_calculate_zero_rovers_positions()
-	{
-		$MarsRoverService = new MarsRoverService("");
-		
-		$result = $MarsRoverService->calculate();
-
-		$this->assertEquals([], $result);
-	}
+	
 	
 	public function test_calculate_one_rover_position()
 	{
