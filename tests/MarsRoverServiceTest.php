@@ -17,8 +17,7 @@ class MarsRoverServiceTest extends TestCase
         
 		$this->assertEquals([5, 5], $result);
     }
-  
-	
+  	
 	
 	public function test_calculate_one_rover_position()
 	{
@@ -35,6 +34,17 @@ class MarsRoverServiceTest extends TestCase
 		$result = $MarsRoverService->calculate();
 
 		$this->assertEquals(["1 3 N", "5 1 E"], $result);
+	}
+
+	public function test_calculate_crush_when_rover_move_into_other_rover_result()
+	{
+		$MarsRoverService = new MarsRoverService("5 5\n1 2 N\nLMLMLMLMM\n1 2 N\nM");
+		
+		$result = $MarsRoverService->calculate();
+
+		$this->assertEquals(['1 3 N', 'crush'], $result);
+
+
 	}
 
 }

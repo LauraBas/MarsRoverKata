@@ -5,22 +5,27 @@ use App\Models\Rover;
 
 class MarsRoverService 
 {
+    public array $result;
+
     public function __construct(string $input)
     {
         $instructions = explode("\n", $input);
         $plateauDimensions = array_shift($instructions);
         $this->plateau = new Plateau($plateauDimensions); 
         $this->rovers = $this->createRovers($instructions);
+
     }
 
     public function calculate() :array 
     {
-        $result =[];
+        $this->result = [];
         foreach($this->rovers as $rover)
         {
-            array_push($result,$rover->go());
+            $finalRoverPosition = $rover->go();
+            array_push($this->result, $finalRoverPosition);
+            $this->plateau->setOcuppaidPositions($finalRoverPosition);
         }
-        return $result;
+        return $this->result;
     }
 
     public function getPlateauSize() :array

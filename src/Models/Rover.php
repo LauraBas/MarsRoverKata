@@ -90,6 +90,10 @@ Class Rover {
                 {
                     return "out of limits";
                 }
+                if ($this->plateau->isAnotherRoverInThisCoordenate($this->roverX, $this->roverY))
+                {
+                    return "crush";
+                }
             } 
         }                
         return $this->roverX . " " . $this->roverY . " " . $this->roverOrientation;                                            
